@@ -8,17 +8,24 @@ metadata:
   name: guestbook
 spec:
   generators:
-  - clusters: {} # This is a generator, specifically, a cluster generator.
+  - clusters:
+        selector:
+          matchLabels:
+            argocd.argoproj.io/secret-type: cluster
   template: 
     # This is a template Argo CD Application, but with support for parameter substitution.
     metadata:
       name: '{{name}}-guestbook'
     spec:
       project: "default"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
       source:
-        repoURL: https://github.com/argoproj/argocd-example-apps/
+        repoURL: https://github.com/yarelm/argocd-applicationset-demo/
         targetRevision: HEAD
-        path: guestbook
+        path: overlays/{{cluster}}
       destination:
         server: '{{server}}'
-        namespace: guestbook
+        namespace: example
