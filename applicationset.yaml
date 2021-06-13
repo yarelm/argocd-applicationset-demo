@@ -25,7 +25,7 @@ spec:
       source:
         repoURL: https://github.com/yarelm/argocd-applicationset-demo/
         targetRevision: HEAD
-        path: overlays/{{cluster}}
+        path: overlays/{{name}}
       destination:
         server: '{{server}}'
         namespace: example
