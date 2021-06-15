@@ -4,6 +4,7 @@ metadata:
   name: web
   namespace: example
 spec:
+  replicas: 2
   selector:
     matchLabels:
       run: web
@@ -12,7 +13,6 @@ spec:
       labels:
         run: web
     spec:
-      replicas: 2
       containers:
       - image: gcr.io/google-samples/hello-app:1.0
         imagePullPolicy: IfNotPresent
