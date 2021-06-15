@@ -1,3 +1,10 @@
 bases:
 - ../../base
 namePrefix: prod-
+patchesJson6902:
+  - target:
+      version: v1
+      group: apps
+      kind: Deployment
+      name: example
+    path: deployment.yaml
