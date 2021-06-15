@@ -6,5 +6,6 @@ patchesJson6902:
       version: v1
       group: apps
       kind: Deployment
-      name: example
+      namespace: example
+      name: web
     path: deployment.yaml
