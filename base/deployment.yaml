@@ -12,6 +12,11 @@ spec:
       labels:
         run: web
     spec:
+      tolerations:
+      - key: cloud.google.com/gke-preemptible
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       containers:
       - image: gcr.io/google-samples/hello-app:1.0
         imagePullPolicy: IfNotPresent
